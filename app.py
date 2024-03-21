@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Welcome! to the number-guessing game.'
 
 if __name__ == '__main__':
     app.run(host='localhost', port=7071)
@@ -33,3 +33,13 @@ def number_guessing_game():
                 print("Please try again, the number is higher than the correct answer.")
             else:
                 print("Please try again, the number is lower than the answer.")
+            
+        # Increment the attempts
+        attempts += 1
+
+    # Inform the user if they couldn't guess the number in the allowed attempts
+    if attempts == max_attempts:
+        print(f"Sorry, you've run out of attempts. The correct number was {secret_number}")
+
+# Run the game
+number_guessing_game()
