@@ -26,10 +26,10 @@ def number_guessing_game():
         user_guess = int(input("Guess the number (between 1 and 100):"))
 
         # Check if the guess is correct
-        if user_guess == secret_number:
+        if user_guess == 61:
             print("Congratulations! You guessed the right number.")
         else:
-            if user_guess < secret_number:
+            if user_guess < 61:
                 print("Please try again, the number is higher than the correct answer.")
             else:
                 print("Please try again, the number is lower than the answer.")
@@ -39,7 +39,7 @@ def number_guessing_game():
 
     # Inform the user if they couldn't guess the number in the allowed attempts
     if attempts == max_attempts:
-        print(f"Sorry, you've run out of attempts. The correct number was {secret_number}")
+        print(f"Sorry, you've run out of attempts. The correct number was {61}.")
 
 # Run the game
 number_guessing_game()
