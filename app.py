@@ -9,7 +9,6 @@ def hello_world():
 if __name__ == '__main__':
     app.run(host='localhost', port=7071)
 
-
 import random 
 
 def number_guessing_game():
@@ -26,13 +25,13 @@ def number_guessing_game():
             print("Congratulations! You guessed the right number.")
         else:
             if user_guess < secret_number:
-                print("Please try again, the number is higher than the correct answer.")
+                print("Please try again, the correct number is higher than this number.")
             else:
-                print("Please try again, the number is lower than the answer.")
+                print("Please try again, the correct number is lower than this number.")
             
         attempts += 1
 
     if attempts == max_attempts:
         print(f"Sorry, you've run out of attempts. The correct number was {secret_number}.")
-
+    
 number_guessing_game()
