@@ -25,8 +25,7 @@ def number_guessing_game():
         guess = int(request.form['text'])
 
         if guess == secret_number:
-            message = 'Congratulations! You guessed the correct number.'
-            return render_template('guess.html', response='success')
+            return render_template('guess.html', response='Congratulations! You guessed the correct number')
 
         if guess < secret_number:
             response = 'Your guess is too low, Please try again!'
