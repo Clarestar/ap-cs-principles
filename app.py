@@ -3,38 +3,46 @@ import random
 
 app = Flask(__name__)
 
+secret_number = random.randint(1, 100)
+
 @app.route('/')
 def hello_world():
     return 'Welcome! to the number-guessing game.'
 
+@app.route('/reset')
+def reset():
+    global secret_number 
+    secret_number = random.randint(1, 100)
+    return 'a new secret number has been generated.'
+
 @app.route('/guess', methods=['GET', 'POST'])
 def number_guessing_game():
     if request.method == 'GET':
-        secret_number = random.randint(1, 100)
+        # secret number originally here
         print('Secret number:', secret_number)
-        return render_template('guess.html', response='', message='Guess the number between 1 and 100!')
+        return render_template('guess.html', response='')
     
     if request.method == 'POST':
-        guess = int(request.form['guess'])
-        secret_number = int(request.form['secret_number'])
-        attempts = int(request.form['attempts'])
-        max_attempts = 5
+        guess = int(request.form['text'])
+        # secret_number = int(request.form['secret_number'])
+        # attempts = int(request.form['attempts'])
+        # max_attempts = 5
 
         if guess == secret_number:
             message = 'Congratulations! You guessed the correct number.'
-            return render_template('guess.html', response='success', message=message)
+            return render_template('guess.html', response='success')
 
-        attempts += 1
-        if attempts >= max_attempts:
-            message = 'Game over! The secret number was {secret_number}.'
-            return render_template('guess.html', response='game_over', message=message)
+        # attempts += 1
+        # if attempts >= max_attempts:
+        #     message = 'Game over! The secret number was {secret_number}.'
+        #     return render_template('guess.html', response='game_over', message=message)
 
         if guess < secret_number:
             response = 'Your guess is too low!'
         else:
             response = 'Your guess is too high!'
         
-        return render_template('guess.html', response = '')
+        return render_template('guess.html', response = response)
 
     # max_attempts = 5
     # attempts = 0 
@@ -70,4 +78,3 @@ def number_guessing_game():
 
 if __name__ == '__main__':
     app.run(host='localhost', port=7071)
-    app.run(debug=True)
