@@ -58,8 +58,6 @@ def guess_secret_numbers():
     if request.method == 'POST':
         guess = int(request.form['text'])
         return guess_number_list(guess, secret_numbers)
-        
-
 
 if __name__ == '__main__':
     app.run(host='localhost', port=7071)
